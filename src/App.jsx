@@ -1,10 +1,27 @@
-import categories from "./categories.json";
-import CategoriesList from "./components/categories-list/categories-list.component";
+import { Routes, Route } from "react-router-dom";
+
+import Navigation from "./routes/navigation/navigation.page";
+import Home from "./routes/home/home.page";
+import SignIn from "./routes/sign-in/sign-in.page";
+
+const Shop = () => {
+  return (
+    <div className="Shop">
+      <h1>Shop</h1>
+    </div>
+  );
+};
 
 const App = () => {
   return (
     <div className="App">
-      <CategoriesList categories={categories} />
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<Home />} />
+          <Route path="shop" element={<Shop />} />
+          <Route path="sign-in" element={<SignIn />} />
+        </Route>
+      </Routes>
     </div>
   );
 };
